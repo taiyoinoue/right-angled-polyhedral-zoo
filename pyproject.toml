@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=42"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hyperhedron"
+version = "0.1.0"
+description = "Construct and visualize right-angled compact hyperbolic polyhedra"
+requires-python = ">=3.9"
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.12",
+    "networkx>=3.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "hypothesis>=6.92",
+]
+web = [
+    "fastapi>=0.104",
+    "uvicorn[standard]>=0.24",
+]
+jax = [
+    "jax>=0.4.20",
+    "jaxlib>=0.4.20",
+]
+
+[project.scripts]
+hyperhedron-batch = "hyperhedron.batch:_cli"
+hyperhedron-web = "hyperhedron.web.app:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

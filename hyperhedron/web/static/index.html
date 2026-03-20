@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hyperhedron Zoo</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f0f1a;
+      --panel: #161626;
+      --border: #2a2a44;
+      --accent: #5577dd;
+      --accent-hover: #7799ff;
+      --text: #ccd0e0;
+      --text-dim: #6670a0;
+      --success: #44bb77;
+      --warn: #ccaa44;
+      --danger: #cc4455;
+    }
+
+    body {
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    /* ── Sidebar ───────────────────────────────── */
+    #sidebar {
+      width: 240px;
+      min-width: 200px;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border);
+      background: var(--panel);
+      flex-shrink: 0;
+    }
+
+    #sidebar-header {
+      padding: 14px 16px 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    #sidebar-header h1 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--accent-hover);
+    }
+
+    #sidebar-header p {
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      margin-top: 3px;
+    }
+
+    #poly-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 6px 0;
+    }
+
+    .poly-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      border-left: 3px solid transparent;
+      transition: background 0.12s;
+    }
+
+    .poly-item:hover { background: rgba(85,119,221,0.12); }
+
+    .poly-item.active {
+      background: rgba(85,119,221,0.2);
+      border-left-color: var(--accent);
+    }
+
+    .poly-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .poly-dot.computed  { background: var(--success); }
+    .poly-dot.pending   { background: var(--text-dim); }
+
+    .poly-name { flex: 1; }
+
+    /* ── Main area ─────────────────────────────── */
+    #main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* ── Toolbar ───────────────────────────────── */
+    #toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px;
+      border-bottom: 1px solid var(--border);
+      background: var(--panel);
+      flex-shrink: 0;
+      min-height: 44px;
+    }
+
+    #toolbar-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      flex: 1;
+    }
+
+    #toolbar-info {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      display: flex;
+      gap: 14px;
+    }
+
+    .badge {
+      background: rgba(85,119,221,0.2);
+      color: var(--accent-hover);
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 0.72rem;
+    }
+
+    button {
+      padding: 5px 12px;
+      border-radius: 5px;
+      border: 1px solid var(--border);
+      background: rgba(85,119,221,0.15);
+      color: var(--text);
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: background 0.12s;
+    }
+
+    button:hover { background: rgba(85,119,221,0.3); }
+    button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* ── Canvas area ───────────────────────────── */
+    #canvas-wrap {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ── Overlay states ────────────────────────── */
+    #overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      background: var(--bg);
+      z-index: 10;
+    }
+
+    #overlay.hidden { display: none; }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    #overlay-msg {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    #overlay-error {
+      color: var(--danger);
+      font-size: 0.8rem;
+      max-width: 400px;
+      text-align: center;
+      white-space: pre-wrap;
+    }
+
+    /* ── Controls hint ─────────────────────────── */
+    #hint {
+      position: absolute;
+      bottom: 12px;
+      right: 14px;
+      font-size: 0.68rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+      text-align: right;
+      pointer-events: none;
+    }
+
+    /* ── Face info tooltip ─────────────────────── */
+    #face-tip {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(22,22,38,0.88);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 0.75rem;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+
+    #face-tip.visible { opacity: 1; }
+  </style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<nav id="sidebar">
+  <div id="sidebar-header">
+    <h1>Hyperhedron Zoo</h1>
+    <p>Right-angled hyperbolic polyhedra</p>
+  </div>
+  <div id="poly-list">
+    <div style="padding:16px;color:var(--text-dim);font-size:0.8rem">Loading…</div>
+  </div>
+</nav>
+
+<!-- Main -->
+<div id="main">
+  <div id="toolbar">
+    <span id="toolbar-title" style="color:var(--text-dim)">Select a polyhedron</span>
+    <div id="toolbar-info"></div>
+    <button id="btn-reset" title="Reset hyperbolic position to origin" disabled>Reset</button>
+    <button id="btn-faces" title="Toggle face visibility">Faces</button>
+    <button id="btn-edges" title="Toggle edge visibility">Edges</button>
+  </div>
+
+  <div id="canvas-wrap">
+    <canvas id="canvas"></canvas>
+
+    <div id="overlay">
+      <div class="spinner" id="spinner" style="display:none"></div>
+      <div id="overlay-msg">Select a polyhedron from the list</div>
+      <div id="overlay-error"></div>
+    </div>
+
+    <div id="hint">
+      Left drag: rotate &nbsp;|&nbsp; Shift+drag: hyperbolic translate<br>
+      Scroll: zoom &nbsp;|&nbsp; Dbl-click: center at point &nbsp;|&nbsp; Reset: origin
+    </div>
+
+    <div id="face-tip"></div>
+  </div>
+</div>
+
+<!-- Import map: resolves bare 'three' specifier used internally by OrbitControls -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"
+  }
+}
+</script>
+
+<!-- Sidebar population runs immediately, independent of Three.js CDN -->
+<script>
+(function() {
+  const list = document.getElementById('poly-list');
+
+  async function refreshSidebar() {
+    try {
+      const r = await fetch('/api/polyhedra');
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const items = (await r.json()).filter(item => item.computed);
+
+      if (!items.length) {
+        list.innerHTML = '<div style="padding:16px;color:var(--text-dim);font-size:0.8rem">No pre-rendered polyhedra yet.</div>';
+        return;
+      }
+
+      // Add entries that aren't already in the list
+      const existing = new Set([...list.querySelectorAll('.poly-item')].map(el => el.dataset.name));
+      items.forEach(({ name }) => {
+        if (existing.has(name)) return;
+        const div = document.createElement('div');
+        div.className = 'poly-item';
+        div.dataset.name = name;
+        div.innerHTML = '<div class="poly-dot computed" title="Cached"></div>'
+          + '<span class="poly-name">' + name + '</span>';
+        div.addEventListener('click', () => {
+          document.querySelectorAll('.poly-item').forEach(el => el.classList.remove('active'));
+          div.classList.add('active');
+          if (window._selectPolyhedron) window._selectPolyhedron(name, div);
+        });
+        list.appendChild(div);
+        if (list.querySelector('[style]')) list.querySelector('[style]').remove();
+      });
+    } catch (e) {
+      if (!list.querySelector('.poly-item')) {
+        list.innerHTML = '<div style="padding:16px;color:var(--danger);font-size:0.8rem">Error: ' + e + '</div>';
+      }
+    }
+  }
+
+  refreshSidebar();
+  setInterval(refreshSidebar, 5000);
+})();
+</script>
+
+<script type="module">
+// If the Three.js module fails to load (CDN unreachable) this block catches it
+// and shows a plain-text error in the canvas overlay.
+try {
+  await import('/static/main.js');
+} catch (e) {
+  document.getElementById('overlay-msg').textContent = '';
+  document.getElementById('overlay-error').textContent =
+    'Three.js failed to load (CDN unreachable?)\n' + e;
+  document.getElementById('overlay').classList.remove('hidden');
+}
+</script>
+</body>
+</html>

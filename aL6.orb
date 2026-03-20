@@ -1,0 +1,103 @@
+% orb
+l6proc.orb
+SolutionType not_attempted
+vertices_known
+
+ 1 6 2.000 1 6 1vu 2uv
+ 2 0 1.000 6 -2 1wu 21ux 22wu 19ux 20wu 2ux
+ 3 0 1.000 1 -2 1xu 4uw 3xu 5uw 6xu 2uw
+ 4 0 1.000 -1 6 1wv 21vx 22wv 19vx 20wv 2vx
+ 5 0 1.000 1 -1 1xv 4vw 3xv 5vw 6xv 2vw
+ 6 0 1.000 -1 -2 1xw 4xw 70xw 66xw 21xw
+ 7 0 1.000 -1 -2 2xw 20xw 16xw 12xw 10xw 6xw
+ 8 28 2.000 1 23 3vu 4uv
+ 9 0 1.000 23 -2 3wu 72ux 71wu 69ux 70wu 4ux
+ 10 0 1.000 -1 23 3wv 72vx 71wv 69vx 70wv 4vx
+ 11 0 1.000 -2 -1 3xw 5xw 43xw 46xw 72xw
+ 12 1 2.000 2 1 5vu 6uv
+ 13 0 1.000 -2 2 5xu 43uw 44xu 9uw 10xu 6uw
+ 14 0 1.000 2 -1 5xv 43vw 44xv 9vw 10xv 6vw
+ 15 16 2.000 3 15 7vu 8uv
+ 16 0 1.000 15 -2 7wu 52ux 51wu 49ux 50wu 8ux
+ 17 0 1.000 -2 3 7xu 11uw 12xu 10uw 9xu 8uw
+ 18 0 1.000 -1 15 7wv 52vx 51wv 49vx 50wv 8vx
+ 19 0 1.000 3 -1 7xv 11vw 12xv 10vw 9xv 8vw
+ 20 0 1.000 -1 -2 7xw 11xw 14xw 54xw 52xw
+ 21 0 1.000 -1 -2 8xw 50xw 48xw 44xw 9xw
+ 22 2 2.000 3 2 9vu 10uv
+ 23 3 2.000 4 3 11vu 12uv
+ 24 0 1.000 -2 4 11xu 14uw 13xu 15uw 16xu 12uw
+ 25 0 1.000 4 -1 11xv 14vw 13xv 15vw 16xv 12vw
+ 26 19 2.000 4 17 13vu 14uv
+ 27 0 1.000 17 -2 13wu 56ux 55wu 53ux 54wu 14ux
+ 28 0 1.000 -1 17 13wv 56vx 55wv 53vx 54wv 14vx
+ 29 0 1.000 -1 -2 13xw 15xw 18xw 58xw 56xw
+ 30 4 2.000 5 4 15vu 16uv
+ 31 0 1.000 -2 5 15xu 18uw 17xu 19uw 20xu 16uw
+ 32 0 1.000 5 -1 15xv 18vw 17xv 19vw 20xv 16vw
+ 33 22 2.000 5 19 17vu 18uv
+ 34 0 1.000 19 -2 17wu 60ux 59wu 57ux 58wu 18ux
+ 35 0 1.000 -1 19 17wv 60vx 59wv 57vx 58wv 18vx
+ 36 0 1.000 -1 -2 17xw 19xw 22xw 64xw 60xw
+ 37 5 2.000 6 5 19vu 20uv
+ 38 25 2.000 6 21 21vu 22uv
+ 39 0 1.000 21 -2 21wu 66ux 65wu 63ux 64wu 22ux
+ 40 0 1.000 -1 21 21wv 66vx 65wv 63vx 64wv 22vx
+ 41 12 2.000 7 12 23vu 24uv
+ 42 0 1.000 12 -2 23wu 41ux 42wu 39ux 40wu 24ux
+ 43 0 1.000 -2 7 23xu 26uw 25xu 27uw 28xu 24uw
+ 44 0 1.000 -1 12 23wv 41vx 42wv 39vx 40wv 24vx
+ 45 0 1.000 7 -1 23xv 26vw 25xv 27vw 28xv 24vw
+ 46 0 1.000 -1 -2 23xw 26xw 49xw 51xw 41xw
+ 47 0 1.000 -1 -2 24xw 40xw 38xw 34xw 32xw 28xw
+ 48 35 2.000 7 14 25vu 26uv
+ 49 0 1.000 14 -2 25wu 47ux 48wu 50ux 49wu 26ux
+ 50 0 1.000 -1 14 25wv 47vx 48wv 50vx 49wv 26vx
+ 51 0 1.000 -1 -2 25xw 27xw 30xw 45xw 47xw
+ 52 7 2.000 8 7 27vu 28uv
+ 53 0 1.000 -2 8 27xu 30uw 29xu 31uw 32xu 28uw
+ 54 0 1.000 8 -1 27xv 30vw 29xv 31vw 32xv 28vw
+ 55 36 2.000 8 24 29vu 30uv
+ 56 0 1.000 24 -2 29wu 71ux 72wu 46ux 45wu 30ux
+ 57 0 1.000 -1 24 29wv 71vx 72wv 46vx 45wv 30vx
+ 58 0 1.000 -1 -2 29xw 31xw 67xw 69xw 71xw
+ 59 8 2.000 9 8 31vu 32uv
+ 60 0 1.000 -2 9 31xu 67uw 68xu 33uw 34xu 32uw
+ 61 0 1.000 9 -1 31xv 67vw 68xv 33vw 34xv 32vw
+ 62 9 2.000 10 9 33vu 34uv
+ 63 0 1.000 -2 10 33xu 61uw 62xu 37uw 38xu 34uw
+ 64 0 1.000 10 -1 33xv 61vw 62xv 37vw 38xv 34vw
+ 65 0 1.000 -1 -2 33xw 61xw 63xw 65xw 68xw
+ 66 33 2.000 11 18 35vu 36uv
+ 67 0 1.000 18 -2 35wu 55ux 56wu 58ux 57wu 36ux
+ 68 0 1.000 -2 11 35xu 39uw 40xu 38uw 37xu 36uw
+ 69 0 1.000 -1 18 35wv 55vx 56wv 58vx 57wv 36vx
+ 70 0 1.000 11 -1 35xv 39vw 40xv 38vw 37xv 36vw
+ 71 0 1.000 -1 -2 35xw 39xw 42xw 53xw 55xw
+ 72 0 1.000 -1 -2 36xw 57xw 59xw 62xw 37xw
+ 73 10 2.000 11 10 37vu 38uv
+ 74 11 2.000 12 11 39vu 40uv
+ 75 34 2.000 12 16 41vu 42uv
+ 76 0 1.000 16 -2 41wu 51ux 52wu 54ux 53wu 42ux
+ 77 0 1.000 -1 16 41wv 51vx 52wv 54vx 53wv 42vx
+ 78 13 2.000 13 2 43vu 44uv
+ 79 0 1.000 -2 13 43xu 46uw 45xu 47uw 48xu 44uw
+ 80 0 1.000 13 -1 43xv 46vw 45xv 47vw 48xv 44vw
+ 81 30 2.000 13 24 45vu 46uv
+ 82 14 2.000 14 13 47vu 48uv
+ 83 15 2.000 15 14 49vu 50uv
+ 84 17 2.000 16 15 51vu 52uv
+ 85 18 2.000 17 16 53vu 54uv
+ 86 20 2.000 18 17 55vu 56uv
+ 87 21 2.000 19 18 57vu 58uv
+ 88 23 2.000 20 19 59vu 60uv
+ 89 0 1.000 -2 20 59xu 62uw 61xu 63uw 64xu 60uw
+ 90 0 1.000 20 -1 59xv 62vw 61xv 63vw 64xv 60vw
+ 91 32 2.000 20 10 61vu 62uv
+ 92 24 2.000 21 20 63vu 64uv
+ 93 26 2.000 22 21 65vu 66uv
+ 94 0 1.000 -2 22 65xu 68uw 67xu 69uw 70xu 66uw
+ 95 0 1.000 22 -1 65xv 68vw 67xv 69vw 70xv 66vw
+ 96 31 2.000 22 9 67vu 68uv
+ 97 27 2.000 23 22 69vu 70uv
+ 98 29 2.000 24 23 71vu 72uv
