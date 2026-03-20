@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gxl SYSTEM "http://www.gupro.de/GXL/gxl-1.0.dtd">
+<gxl><graph id="Dodecahedron" edgemode="undirected">
+  <node id="node0"/>
+  <node id="node1"/>
+  <node id="node2"/>
+  <node id="node3"/>
+  <node id="node4"/>
+  <node id="node5"/>
+  <node id="node6"/>
+  <node id="node7"/>
+  <node id="node8"/>
+  <node id="node9"/>
+  <node id="node10"/>
+  <node id="node11"/>
+  <edge from="node0" to="node1"/>
+  <edge from="node0" to="node2"/>
+  <edge from="node0" to="node3"/>
+  <edge from="node0" to="node5"/>
+  <edge from="node0" to="node6"/>
+  <edge from="node1" to="node2"/>
+  <edge from="node1" to="node5"/>
+  <edge from="node1" to="node7"/>
+  <edge from="node1" to="node8"/>
+  <edge from="node2" to="node3"/>
+  <edge from="node2" to="node4"/>
+  <edge from="node2" to="node8"/>
+  <edge from="node3" to="node4"/>
+  <edge from="node3" to="node6"/>
+  <edge from="node3" to="node9"/>
+  <edge from="node4" to="node8"/>
+  <edge from="node4" to="node9"/>
+  <edge from="node4" to="node10"/>
+  <edge from="node5" to="node6"/>
+  <edge from="node5" to="node7"/>
+  <edge from="node5" to="node11"/>
+  <edge from="node6" to="node9"/>
+  <edge from="node6" to="node11"/>
+  <edge from="node7" to="node8"/>
+  <edge from="node7" to="node10"/>
+  <edge from="node7" to="node11"/>
+  <edge from="node8" to="node10"/>
+  <edge from="node9" to="node10"/>
+  <edge from="node9" to="node11"/>
+  <edge from="node10" to="node11"/>
+</graph></gxl>
